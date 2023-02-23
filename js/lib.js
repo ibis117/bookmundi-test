@@ -10,6 +10,13 @@ const lib  = function (selector = null) {
             return elements[index].value;
         },
 
+        setVal: (val)=> {
+            elements.forEach(element => {
+                element.value = val;
+            })
+            return obj;
+        },
+
         change: (className) =>  {
             elements.forEach(element => {
                 element.className = className;

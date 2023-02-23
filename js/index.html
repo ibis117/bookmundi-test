@@ -50,9 +50,12 @@
     })
 
 
-    //input get val
-    const inputName = lib('#name').val();
-    console.log("Input Name", inputName);
+    //input get value
+    //use css selector to get data;
+
+    const inputElement = lib('input[name="name"]')
+    inputElement.val();
+    inputElement.setVal('Saras Nakakarmi');
 
     //requests at the same time which need to be resolved all at the same time.
     parallelDataFetch();
