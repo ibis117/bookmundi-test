@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookmundi Test</title>
+</head>
+<body>
+
+<div class="test" data-name="Sanil">
+    Test
+</div>
+
+<div>
+    <input type="text" id="name" name="name" value="Sanil Nakarmi" />
+</div>
+
+
+<script src="lib.js"></script>
+
+<script src="parallel.js"></script>
+
+<script>
+
+    //adding class
+    const element = lib('.test')
+
+    element.change('test1');
+
+    //get dataset by name;
+    const name =  element.getDataSet('name');
+
+    //append new content
+    element.append("<p>New Content<p/>")
+
+
+    //get request
+    lib().ajax().get('https://jsonplaceholder.typicode.com/posts').then(res=> res.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
+
+    //post request
+    lib().ajax().post('https://jsonplaceholder.typicode.com/posts', {
+        userId: 1,
+        title:"Title",
+        body: "Body"
+    }).then(res => {
+        console.log(res);
+    }).catch(err => {
+        console.log(err)
+    })
+
+
+    //input get val
+    const inputName = lib('#name').val();
+    console.log("Input Name", inputName);
+
+    //requests at the same time which need to be resolved all at the same time.
+    parallelDataFetch();
+
+
+
+
+
+</script>
+
+</body>
+</html>
